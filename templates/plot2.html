@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+
+<style>
+    
+</style>
+
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <div class="card main-card mt-5">
+        <div class="card-body">
+            <p class="h2">Carbon Emissions from various Major Sectors</p>
+            <hr>
+            <p style="font-size: larger;">Here we can clearly see that Coal Electric Power Sector has the greatest impact on allover Carbon Emissions.</p>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-11">
+            <div id="graph" class="gr-sn"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script type="text/javascript">
+
+    var graphs = {{graphJSON | safe}};
+
+
+    console.log(graphs[0].data)
+    for(var i in graphs) {
+        Plotly.plot('graph',
+                    graphs[i].data
+                    );
+    }
+
+</script>
+
+{% endblock %}
