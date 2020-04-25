@@ -1,0 +1,203 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+
+<style>
+    
+</style>
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="btn-group col-md mt-5">
+        <button class="btn btn-secondary btn-lg active" id="pre_view">Predict Views</button>
+        <button class="btn btn-secondary btn-lg" id="pre_like">Predict Likes</button>
+        <button class="btn btn-secondary btn-lg" id="pre_comment">Predict Comments</button>
+    </div>
+
+    <div class="card main-card mt-5" id="viewcard" style="border-left: 4px solid #0062cc;">
+        <div class="card-body">
+                <p class="h3 text-center">Predict Video Views</p>
+                <hr>
+            <!-- <form id="formdata"> -->
+                <label class="mt-3">Category</label>
+                <input class="form-control" name="category" id="category1">
+
+                <label class="mt-4">Likes</label>
+                <input class="form-control" name="like" id="like1">
+
+                <label class="mt-4">Dislikes</label>
+                <input class="form-control" name="dislike" id="dislike1">
+
+                <label class="mt-4">Comment Count</label>
+                <input class="form-control" name="comment" id="comment1">
+
+                <button class="btn btn-primary mt-4" id="predview">Submit</button>
+            <!-- </form> -->
+            <hr>
+
+            <div class="card bg-dark text-light">
+                <div class="card-body">
+                    <p class="h4">Results</p>
+                    <hr>
+                    <p class="h3 mt-5" id="result"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card main-card mt-5" id="likecard" style="border-left: 4px solid #bd2130;">
+        <div class="card-body">
+            <p class="h3 text-center">Predict Video Likes</p>
+            <hr>
+            <!-- <form id="formdata"> -->
+                <label class="mt-3">Category</label>
+                <input class="form-control" name="category" id="category2">
+
+                <label class="mt-4">Views</label>
+                <input class="form-control" name="view" id="view2">
+
+                <label class="mt-4">Dislikes</label>
+                <input class="form-control" name="dislike" id="dislike2">
+
+                <label class="mt-4">Comment Count</label>
+                <input class="form-control" name="comment" id="comment2">
+
+                <button class="btn btn-primary mt-4" id="predlike">Submit</button>
+            <!-- </form> -->
+            <hr>
+
+            <div class="card bg-dark text-light">
+                <div class="card-body">
+                    <p class="h4">Results :</p>
+                    <hr>
+                    <p class="h3" id="result"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card main-card mt-5" id="commentcard" style="border-left: 4px solid #d39e00;">
+        <div class="card-body">
+            <p class="h3 text-center">Predict Video Comments</p>
+            <hr>
+            <!-- <form id="formdata"> -->
+                <label class="mt-3">Category</label>
+                <input class="form-control" name="category" id="category3">
+
+                <label class="mt-4">Views</label>
+                <input class="form-control" name="view" id="view3">
+
+                <label class="mt-4">Likes</label>
+                <input class="form-control" name="like" id="like3">
+
+                <label class="mt-4">Dislikes</label>
+                <input class="form-control" name="dislike" id="dislike3">
+
+                <button class="btn btn-primary mt-4" id="predcomment">Submit</button>
+            <!-- </form> -->
+            <hr>
+
+            <div class="card bg-dark text-light">
+                <div class="card-body">
+                    <p class="h4">Results</p>
+                    <hr>
+                    <p class="h3" id="result"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+
+<script type="text/javascript">
+
+    $(document).ready(() => {
+
+        // $('#viewcard').hide();
+        $('#likecard').hide();
+        $('#commentcard').hide();
+
+        hideall = () => {
+            $('#viewcard').hide();
+            $('#likecard').hide();
+            $('#commentcard').hide();
+            $('#pre_view').removeClass('active');
+            $('#pre_like').removeClass('active');
+            $('#pre_comment').removeClass('active');
+        }
+
+        $('#pre_view').click(() => {
+            hideall();
+            $('#pre_view').addClass('active')
+            $('#viewcard').show();
+        })
+
+        $('#pre_like').click(() => {
+            hideall();
+            $('#pre_like').addClass('active')
+            $('#likecard').show();
+        })
+
+        $('#pre_comment').click(() => {
+            hideall();
+            $('#pre_comment').addClass('active')
+            $('#commentcard').show();
+        })
+
+        $('#result').hide()
+        $("#predview").click(function(e) {
+
+            const cat = $('#category1').val();
+            const like = $('#like1').val();
+            const dlike = $('#dislike1').val();
+            const com = $('#comment1').val();
+
+            data = getResult('views', [cat, like, dlike, com]);
+            $('#viewresult').show()
+            $('#viewresult').html('Predicted Views : '+data)
+        });
+
+        $("#predlike").click(function(e) {
+
+            const cat = $('#category2').val();
+            const view = $('#view2').val();
+            const dlike = $('#dislike2').val();
+            const com = $('#comment2').val();
+
+            getResult('likes', [cat, view, dlike, com]);
+        });
+
+        $("#predcomment").click(function(e) {
+
+            const cat = $('#category3').val();
+            const view = $('#view3').val();
+            const like = $('#like3').val();
+            const dlike = $('#dislike3').val();
+
+            getResult('comments', [cat, view, like, dlike]);
+        });
+
+        getResult = (prediction, data) => {
+            $.ajax({
+            type: "POST",
+            url: '/predict',
+            data: {data : JSON.stringify(data), prediction : prediction}, 
+            success: function(data)
+            {
+                // alert(data); // show response from the php script.
+                console.log(data)
+                return data    
+            }
+            });
+        }
+    })
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,187 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+
+    <style>
+        .img-div{
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 10rem;
+        }
+
+        .gh-card{
+            box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.15);
+            transition-duration: 0.3s;
+        }
+
+        .gh-card:hover{
+            box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+    </style>
+
+{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container mt-5">
+            <h1 class="display-3">Carbon Footprint</h1>
+            <p class="lead">CO2 & GHG emission Data Analysis</p>
+            <hr class="my-2">
+            <p class="h3">All Plots</p>
+
+            <a href="/predict" class="btn btn-primary">Predict View Likes and Comments</a>
+
+            <section class="mt-5">
+                <div class="row">
+                    <div class="col-md-6 mt-5">
+                        <div class="card gh-card">
+                            <div class="row card-body">
+                                <div class="col-5 img-div" style="background-image: url('/static/graph1.png');"></div>
+                                <div class="col-7">
+                                    <h4>Likes Comparison</h4>
+                                    <p>Yearly carbon emissions from all the factories</p>
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/likes">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-6 mt-5">
+                        <div class="card gh-card">
+                            <div class="row card-body">
+                                <div class="col-5 img-div" style="background-image: url('/static/graph2.png');"></div>
+                                <div class="col-7">
+                                    <h4>View Comparison</h4>
+                                    <p>Yearly carbon emissions from all the factories</p>
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/views">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-6 mt-5">
+                        <div class="card gh-card">
+                            <div class="row card-body">
+                                <div class="col-5 img-div" style="background-image: url('/static/graph3.png');"></div>
+                                <div class="col-7">
+                                    <h4>Comments</h4>
+                                    <p>Yearly carbon emissions from all the factories</p>
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/comments">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-6 mt-5">
+                        <div class="card gh-card">
+                            <div class="row card-body">
+                                <div class="col-5 img-div" style="background-image: url('/static/graph4.png');"></div>
+                                <div class="col-7">
+                                    <h4>Title Length</h4>
+                                    <p>Yearly carbon emissions from all the factories</p>
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/title">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-6 mt-5">
+                        <div class="card gh-card">
+                            <div class="row card-body">
+                                <div class="col-5 img-div" style="background-image: url('/static/graph5.png');"></div>
+                                <div class="col-7">
+                                    <h4>Title 2</h4>
+                                    <p>Yearly carbon emissions from all the factories</p>
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/title2">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-6 mt-5">
+                        <div class="card gh-card">
+                            <div class="row card-body">
+                                <div class="col-5 img-div" style="background-image: url('/static/graph1.png');"></div>
+                                <div class="col-7">
+                                    <h4>Channel</h4>
+                                    <p>Yearly carbon emissions from all the factories</p>
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/channel">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-5">
+                        <div class="card gh-card">
+                            <div class="row card-body">
+                                <div class="col-5 img-div" style="background-image: url('/static/graph1.png');"></div>
+                                <div class="col-7">
+                                    <h4>Category</h4>
+                                    <p>Yearly carbon emissions from all the factories</p>
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/cate">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-5">
+                        <div class="card gh-card">
+                            <div class="row card-body">
+                                <div class="col-5 img-div" style="background-image: url('/static/graph1.png');"></div>
+                                <div class="col-7">
+                                    <h4>Carbon Emissions</h4>
+                                    <p>Yearly carbon emissions from all the factories</p>
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/map">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-5">
+                        <div class="card gh-card">
+                            <div class="row card-body">
+                                <div class="col-5 img-div" style="background-image: url('/static/graph1.png');"></div>
+                                <div class="col-7">
+                                    <h4>Total Carbon Emissions per country</h4>
+                                    <p>Yearly carbon emissions from all the factories</p>
+                                    <a class="btn btn-secondary btn-lg btn-block" href="/topemitter">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mt-5">
+                        <div class="card gh-card">
+                            <div class="row card-body">
+                                <div class="col-5 img-div" style="background-image: url('/static/graph1.png');"></div>
+                                <div class="col-7">
+                                    <h4>Carbon Emissions</h4>
+                                    <p>Yearly carbon emissions from all the factories</p>
+                                    <!-- <a class="btn btn-secondary btn-lg btn-block" href="/map">View</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script type="text/javascript">
+
+    
+
+</script>
+
+{% endblock %}

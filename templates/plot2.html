@@ -37,12 +37,8 @@
     var graphs = {{graphJSON | safe}};
 
 
-    console.log(graphs[0].data)
-    for(var i in graphs) {
-        Plotly.plot('graph',
-                    graphs[i].data
-                    );
-    }
+    console.log(graphs)
+    Plotly.plot('graph', graphs);
 
 </script>
 
